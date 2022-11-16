@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+ name: cloud-gateway
+spec:
+ selector:
+  matchLabels:
+   app: cloud-gateway
+ replicas: 1
+ template:
+  metadata:
+   labels:
+    app: cloud-gateway
+  spec:
+   containers:
+    - name: cloud-gateway
+      image: cloud-gateway.jar
+      imagePullPolicy: IfNotPresent
+      ports:
+       - containerPort: 8093
